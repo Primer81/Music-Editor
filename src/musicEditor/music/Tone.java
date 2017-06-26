@@ -1,27 +1,35 @@
-package musicEditor.data;
+package musicEditor.music;
 
 /**
- * Represents a musical tone. Has fields representing its pitch, duration, volume, and timbre.
+ * Represents a musical tone. Has fields representing its pitch, start, duration, volume,
+ * and timbre.
  * Pitch is represented by the Pitch class.
+ * Start is an int representing the tick or beat at which this tone is played.
  * Duration is an int measured in MIDI ticks.
  * Volume is an int representing the tones loudness.
  * Timbre is an int representing MIDI instrument codes between 1 and 128 inclusive.
  */
 public class Tone {
   private Pitch pitch;
+  private int start;
   private int duration;
   private int volume;
   private int timbre;
 
   /**
    * Constructs a Tone.
+   * Ensures that start is non-negative.
    * Ensures that duration is greater than or equal to one.
    * Ensures that volume is non-negative.
    * Ensures that timbre is greater than or equal to one and less than or equal to 128
    * @param pitch this Tone's pitch
    */
-  public Tone(Pitch pitch, int duration, int volume, int timbre) {
+  public Tone(Pitch pitch, int start, int duration, int volume, int timbre) {
     this.pitch = pitch;
+    if (start < 0) {
+      throw new IllegalArgumentException("start cannot be negative");
+    }
+    this.start = start;
     if (duration < 1) {
       throw new IllegalArgumentException("duration must be greater than zero");
     }
@@ -43,6 +51,14 @@ public class Tone {
    */
   public void setPitch(Pitch pitch) {
     this.pitch = pitch;
+  }
+
+  /**
+   * Sets this Tone's start
+   * @param start this Tone's start
+   */
+  public void setStart(int start) {
+    this.start = start;
   }
 
   /**
@@ -74,6 +90,14 @@ public class Tone {
    */
   public Pitch getPitch() {
     return this.pitch;
+  }
+
+  /**
+   * Gets this Tone's start.
+   * @return this Tone's start
+   */
+  public int getStart() {
+    return start;
   }
 
   /**
@@ -114,6 +138,7 @@ public class Tone {
     Tone tone = (Tone) o;
 
     if (this.getDuration() != tone.getDuration()) return false;
+    if (this.getStart() != tone.getStart()) return false;
     if (this.getVolume() != tone.getVolume()) return false;
     if (this.getTimbre() != tone.getTimbre()) return false;
     return this.getPitch().equals(tone.getPitch());
@@ -123,6 +148,7 @@ public class Tone {
   public int hashCode() {
     int result = this.getPitch().hashCode();
     result = 31 * result + this.getDuration();
+    result = 31 * result + this.getStart();
     result = 31 * result + this.getVolume();
     result = 31 * result + this.getTimbre();
     return result;
@@ -132,9 +158,15 @@ public class Tone {
   public String toString() {
     return "Tone{" +
         "pitch=" + pitch +
+        ", start=" + start +
         ", duration=" + duration +
         ", volume=" + volume +
         ", timbre=" + timbre +
         '}';
+  }
+
+  @Override
+  public Tone clone() {
+    return new Tone(this.pitch.clone(), this.start, this.duration, this.volume, this.timbre);
   }
 }

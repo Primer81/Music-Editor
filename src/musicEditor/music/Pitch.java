@@ -1,4 +1,4 @@
-package musicEditor.data;
+package musicEditor.music;
 
 /**
  * Represents a pitch in music. Contains a Note enum to represent this Pitch's pitch class and

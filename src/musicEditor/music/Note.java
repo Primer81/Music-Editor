@@ -1,4 +1,4 @@
-package musicEditor.data;
+package musicEditor.music;
 
 /**
  * An enumeration to represent the 12 different pitch classes or notes that exist in music.

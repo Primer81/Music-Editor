@@ -1,4 +1,4 @@
-package musicEditor.data;
+package musicEditor.music;
 
 import java.util.*;
 
@@ -39,11 +39,7 @@ public class MusicSheet {
    * @param sheet this MusicSheet's sheet of musical tones
    */
   public MusicSheet(int TIMBRE, SortedMap<Pitch, MusicRow> sheet) {
-    if (TIMBRE < 1 || TIMBRE > 128) {
-      throw new IllegalArgumentException("timbre must correspond to a valid MIDI instrument " +
-          "code between 1 and 128");
-    }
-    this.TIMBRE = TIMBRE;
+    this(TIMBRE);
     if (!this.validSheet(sheet)) {
       throw new IllegalArgumentException("given sheet is invalid");
     }
@@ -56,6 +52,15 @@ public class MusicSheet {
    */
   public int getTIMBRE() {
     return this.TIMBRE;
+  }
+
+  /**
+   * Gets a copy of the specified row.
+   * @param pitch the pitch of the row
+   * @return the row with the given pitch
+   */
+  public MusicRow getRow(Pitch pitch) {
+    return this.sheet.get(pitch).clone();
   }
 
   /**
@@ -76,13 +81,12 @@ public class MusicSheet {
   }
 
   /**
-   * Adds the given tone to the sheet at the specified beat. Adds another MusicRow to the sheet
+   * Adds the given tone to the sheet. Adds another MusicRow to the sheet
    * if no row exists for the Tone's pitch.
    * @param tone the tone being added
-   * @param beat the beat at which the tone should be added
    * @throws IllegalArgumentException if tone's timbre doesn't match this sheet's timbre
    */
-  public void addTone(Tone tone, int beat) {
+  public void addTone(Tone tone) {
     if (tone.getTimbre() != this.TIMBRE) {
       throw new IllegalArgumentException("tone's timbre does not match this sheet's timbre");
     }
@@ -90,7 +94,7 @@ public class MusicSheet {
     if (!this.sheet.containsKey(pitch)) {
       this.sheet.put(pitch, new MusicRow(pitch, this.TIMBRE));
     }
-    this.sheet.get(pitch).addTone(tone, beat);
+    this.sheet.get(pitch).addTone(tone);
   }
 
   /**
@@ -113,6 +117,16 @@ public class MusicSheet {
   }
 
   /**
+   * Removes the given Tone from this sheet. If it successfully removes the tone it returns true;
+   * otherwise false.
+   * @param tone the tone to be removed
+   * @return whether the tone was removed
+   */
+  public boolean removeTone(Tone tone) {
+    return this.sheet.get(tone.getPitch()).removeTone(tone);
+  }
+
+  /**
    * Gets the Tone of the given pitch at the given beat from the sheet. Returns null if no
    * tone was found.
    * @param pitch pitch of the tone being removed
@@ -125,6 +139,23 @@ public class MusicSheet {
     }
     MusicRow row = this.sheet.get(pitch);
     Tone result = row.getTone(beat);
+    return result;
+  }
+
+  /**
+   * Gets the list of tones at the specified beat from the sheet. Returns an empty list if no
+   * beats exist at that beat.
+   * @param beat where the Tones are being obtained
+   * @return the list of tones at the given beat
+   */
+  public List<Tone> getTonesAtBeat(int beat) {
+    if (this.isEmpty()) {
+      return new ArrayList<>();
+    }
+    List<Tone> result = new ArrayList<>();
+    for (Pitch p : this.sheet.keySet()) {
+      result.add(this.getTone(p, beat));
+    }
     return result;
   }
 
@@ -186,5 +217,10 @@ public class MusicSheet {
       }
     }
     return result;
+  }
+
+  @Override
+  public MusicSheet clone() {
+    return new MusicSheet(this.TIMBRE, new TreeMap<>(this.sheet));
   }
 }

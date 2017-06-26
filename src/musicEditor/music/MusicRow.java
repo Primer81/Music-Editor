@@ -1,4 +1,4 @@
-package musicEditor.data;
+package musicEditor.music;
 
 import java.util.*;
 
@@ -40,12 +40,7 @@ public class MusicRow {
    * @param row this MusicRow's row
    */
   public MusicRow(Pitch PITCH, int TIMBRE, SortedMap<Integer, Tone> row) {
-    this.PITCH = PITCH;
-    if (TIMBRE > 1 || TIMBRE > 128) {
-      throw new IllegalArgumentException("timbre must correspond to a valid MIDI instrument " +
-          "code between 1 and 128");
-    }
-    this.TIMBRE = TIMBRE;
+    this(PITCH, TIMBRE);
     if (!this.validRow(row)) {
       throw new IllegalArgumentException("row cannot contain overlapping tones");
     }
@@ -70,6 +65,7 @@ public class MusicRow {
 
   /**
    * Validates the given row by checking to see if any Tones exist within another Tone's duration.
+   * Also ensures that the Tone's start value matches its key value.
    * @param row the row being validated
    * @return whether the row is valid
    */
@@ -82,17 +78,19 @@ public class MusicRow {
           return false;
         }
       }
+      if (tone.getStart() != key) {
+        return false;
+      }
     }
     return true;
   }
 
   /**
-   * Adds the given tone to the row at the given beat.
+   * Adds the given tone to the row.
    * @param tone the tone being added
-   * @param beat the tone's intended beat
    * @throws IllegalArgumentException if the tone would cause an overlap
    */
-  public void addTone(Tone tone, int beat) {
+  public void addTone(Tone tone) {
     // verifies that the given tone matches this MusicRows timbre and pitch
     if (!(tone.getPitch().equals(this.PITCH))) {
       throw new IllegalArgumentException("given tone does not match this row's pitch");
@@ -101,6 +99,7 @@ public class MusicRow {
       throw new IllegalArgumentException("given tone does not match this row's timbre");
     }
     // check for overlaps
+    int beat = tone.getStart();
     for (Integer key : this.row.keySet()) {
       // checks to see if the given beat is already taken
       if (key == beat) {
@@ -134,13 +133,23 @@ public class MusicRow {
   }
 
   /**
+   * Removes the given Tone from this row. If it successfully removes the tone it returns true;
+   * otherwise false.
+   * @param tone the tone to be removed
+   * @return whether the tone was removed
+   */
+  public boolean removeTone(Tone tone) {
+    return this.row.remove(tone.getStart(), tone);
+  }
+
+  /**
    * Gets the tone at the specified beat. Returns the tone at the beat or null if no tone was
    * mapped to the given beat.
    * @param beat the beat or tick at which the Tone intended to be gotten is located in this row
    * @return the Tone at the specified beat
    */
   public Tone getTone(int beat) {
-    return this.row.get(beat);
+    return this.row.get(beat).clone();
   }
 
   /**
@@ -163,5 +172,10 @@ public class MusicRow {
     int lastBeat = keys.last();
     Tone lastTone = this.row.get(lastBeat);
     return lastBeat + lastTone.getDuration();
+  }
+
+  @Override
+  public MusicRow clone() {
+    return new MusicRow(this.PITCH, this.TIMBRE, new TreeMap<>(this.row));
   }
 }

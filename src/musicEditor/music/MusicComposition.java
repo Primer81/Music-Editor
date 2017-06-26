@@ -1,31 +1,66 @@
-package musicEditor.data;
+package musicEditor.music;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.SortedMap;
+import java.util.SortedSet;
+import java.util.TreeMap;
+import java.util.TreeSet;
 
 /**
  * Represents a composition of music. Contains a Map with integer keys representing timbre which
  * map to MusicSheet objects. These MusicSheet Objects will always have a timbre matching
  * their corresponding key in the map.
+ * Also contains a map with integer keys representing
+ * beats that correspond to Feature objects so that the composition can hold data on where this
+ * composition should repeat or have varied endings.
  */
 public class MusicComposition {
   private SortedMap<Integer, MusicSheet> composition;
+  private SortedMap<Integer, Feature> features;
 
   /**
    * Constructs a new MusicComposition. Initializes the composition.
    */
   public MusicComposition() {
     this.composition = new TreeMap<>();
+    this.features = new TreeMap<>();
   }
+
   /**
    * Constructs a new MusicComposition. Initializes the composition to the given composition
    * @param composition the composition
    * @throws IllegalArgumentException if the given composition is invalid
    */
   public MusicComposition(SortedMap<Integer, MusicSheet> composition) {
+    this();
     if (!this.validComposition(composition)) {
       throw new IllegalArgumentException("the given composition is invalid");
     }
     this.composition = composition;
+  }
+
+  /**
+   * Constructs a new MusicComposition. Allows the construction of this composition with a given
+   * composition as well as a given map of features.
+   * @param composition the composition
+   * @param features the features for this composition
+   * @throws IllegalArgumentException if the given composition is invalid
+   */
+  public MusicComposition(SortedMap<Integer, MusicSheet> composition,
+                          SortedMap<Integer, Feature> features) {
+    this(composition);
+    this.features = features;
+  }
+
+  /**
+   * Gets a copy of the specified sheet.
+   * @param timbre the timbre of the sheet
+   * @return the sheet with the given timbre
+   */
+  public MusicSheet getSheet(int timbre) {
+    return this.composition.get(timbre).clone();
   }
 
   /**
@@ -46,11 +81,10 @@ public class MusicComposition {
   /**
    * Adds the given tone to the composition.
    * @param tone the tone being added
-   * @param beat the beat at which the tone will be added
    */
-  public void addTone(Tone tone, int beat) {
+  public void addTone(Tone tone) {
     MusicSheet sheet = this.composition.get(tone.getTimbre());
-    sheet.addTone(tone, beat);
+    sheet.addTone(tone);
   }
 
   /**
@@ -74,6 +108,16 @@ public class MusicComposition {
   }
 
   /**
+   * Removes the given Tone from this composition. If it successfully removes the
+   * tone it returns true; otherwise false.
+   * @param tone the tone to be removed
+   * @return whether the tone was removed
+   */
+  public boolean removeTone(Tone tone) {
+    return this.composition.get(tone.getTimbre()).removeTone(tone);
+  }
+
+  /**
    * Gets the Tone of the given timbre and pitch at the specified beat. Returns null if no Tone
    * was found.
    * @param timbre the timbre of the Tone
@@ -87,7 +131,22 @@ public class MusicComposition {
     }
     MusicSheet sheet = this.composition.get(timbre);
     Tone result = sheet.getTone(pitch, beat);
-    return result;
+    return result.clone();
+  }
+
+  /**
+   * Gets the list of tones at the specified beat from the specified sheet.
+   * Returns an empty list if no beats exist at that beat.
+   * @param timbre the sheet that the Tones are being obtained from
+   * @param beat the beat where the Tones are being obtained from
+   * @return the list of tones at the given beat
+   */
+  public List<Tone> getTonesAtBeat(int timbre, int beat) {
+    if (!this.composition.containsKey(timbre)) {
+      return new ArrayList<>();
+    }
+    MusicSheet sheet = this.composition.get(timbre);
+    return sheet.getTonesAtBeat(beat);
   }
 
   /**
@@ -95,7 +154,7 @@ public class MusicComposition {
    * @return whether this composition contains MusicSheets
    */
   public boolean isEmpty() {
-    return this.composition.isEmpty();
+    return this.composition.isEmpty() && this.features.isEmpty();
   }
 
   /**
@@ -129,6 +188,42 @@ public class MusicComposition {
         result = length;
       }
     }
+    // changes result to the last feature beat if it is larger
+    if (!this.features.isEmpty()) {
+      int lastFeatureBeat = ((SortedSet<Integer>) this.features.keySet()).last();
+      if (lastFeatureBeat > result) {
+        result = lastFeatureBeat;
+      }
+    }
     return result;
+  }
+
+  /**
+   * Adds the given feature to this composition's feature map. Maps the given beat to the
+   * feature. Does no allow features to overlap.
+   * @param feature the feature being added
+   * @param beat the beat at which the feature will occur
+   */
+  public void addFeature(Feature feature, int beat) {
+    if (this.features.containsKey(beat)) {
+      throw new IllegalArgumentException("feature already exists at given beat");
+    }
+    this.features.put(beat, feature);
+  }
+
+  /**
+   * Removes the feature at the specified beat if there is any and returns it.
+   * Returns null if no feature exists at that beat.
+   */
+  public Feature removeFeature(int beat) {
+    return this.features.remove(beat);
+  }
+
+  /**
+   * Gets the feature at the specified beat if there is any and returns it.
+   * Returns null if no feature exists at that beat.
+   */
+  public Feature getFeature(int beat) {
+    return this.features.get(beat);
   }
 }
