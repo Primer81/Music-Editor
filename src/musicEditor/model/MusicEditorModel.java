@@ -8,7 +8,7 @@ import java.util.SortedSet;
  * Represents a model for a music editor.
  * Keeps track of the current beat, the tempo, the current timbre, and the composition.
  */
-public class MusicEditorModel {
+public class MusicEditorModel implements IMusicEditorModel {
   private MusicComposition composition;
   private MusicTracker musicTracker;
   private MusicPlayer musicPlayer;

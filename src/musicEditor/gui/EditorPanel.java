@@ -5,11 +5,8 @@ import musicEditor.music.MusicTracker;
 import musicEditor.music.Pitch;
 import musicEditor.music.Tone;
 
-import javax.swing.JPanel;
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Graphics;
-import java.awt.Rectangle;
+import javax.swing.*;
+import java.awt.*;
 import java.util.SortedSet;
 
 /**

@@ -5,6 +5,6 @@ import musicEditor.music.MusicSheet;
 /**
  * Represents the view for the music editor.
  */
-public class MusicEditorView {
+public class MusicEditorView implements IMusicEditorView {
   MusicSheet sheet;
 }

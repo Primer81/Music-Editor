@@ -2,12 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a3a2e4d8-5095-4705-84df-d5a8f62b2831" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/musicEditor/controller/IMusicEditorController.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/musicEditor/controller/MusicEditorController.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/musicEditor/model/IMusicEditorModel.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/musicEditor/view/IMusicEditorView.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/musicEditor/gui/EditorPanel.java" afterPath="$PROJECT_DIR$/src/musicEditor/gui/EditorPanel.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/musicEditor/model/MusicEditorModel.java" afterPath="$PROJECT_DIR$/src/musicEditor/model/MusicEditorModel.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/musicEditor/music/MusicComposition.java" afterPath="$PROJECT_DIR$/src/musicEditor/music/MusicComposition.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/musicEditor/music/MusicPlayer.java" afterPath="$PROJECT_DIR$/src/musicEditor/music/MusicPlayer.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/musicEditor/music/MusicRow.java" afterPath="$PROJECT_DIR$/src/musicEditor/music/MusicRow.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/musicEditor/music/MusicSheet.java" afterPath="$PROJECT_DIR$/src/musicEditor/music/MusicSheet.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/musicEditor/view/MusicEditorView.java" afterPath="$PROJECT_DIR$/src/musicEditor/view/MusicEditorView.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -21,62 +23,10 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="Tone.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/musicEditor/music/Tone.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2074">
-              <caret line="138" column="0" lean-forward="false" selection-start-line="138" selection-start-column="0" selection-end-line="138" selection-end-column="0" />
-              <folding>
-                <element signature="e#1693#1694#0" expanded="true" />
-                <element signature="e#1721#1722#0" expanded="true" />
-                <element signature="e#1834#1835#0" expanded="true" />
-                <element signature="e#1862#1863#0" expanded="true" />
-                <element signature="e#1991#1992#0" expanded="true" />
-                <element signature="e#2025#2026#0" expanded="true" />
-                <element signature="e#2144#2145#0" expanded="true" />
-                <element signature="e#2174#2175#0" expanded="true" />
-                <element signature="e#2293#2294#0" expanded="true" />
-                <element signature="e#2323#2324#0" expanded="true" />
-                <element signature="e#2393#2394#0" expanded="true" />
-                <element signature="e#2420#2421#0" expanded="true" />
-                <element signature="e#2519#2520#0" expanded="true" />
-                <element signature="e#2541#2542#0" expanded="true" />
-                <element signature="e#2615#2616#0" expanded="true" />
-                <element signature="e#2645#2646#0" expanded="true" />
-                <element signature="e#2715#2716#0" expanded="true" />
-                <element signature="e#2743#2744#0" expanded="true" />
-                <element signature="e#2813#2814#0" expanded="true" />
-                <element signature="e#2841#2842#0" expanded="true" />
-                <element signature="e#3079#3080#0" expanded="true" />
-                <element signature="e#3123#3124#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MusicSheet.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/musicEditor/music/MusicSheet.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="140" column="18" lean-forward="true" selection-start-line="140" selection-start-column="18" selection-end-line="140" selection-end-column="18" />
-              <folding>
-                <element signature="e#2107#2108#0" expanded="true" />
-                <element signature="e#2135#2136#0" expanded="true" />
-                <element signature="e#2297#2298#0" expanded="true" />
-                <element signature="e#2333#2334#0" expanded="true" />
-                <element signature="e#4410#4411#0" expanded="true" />
-                <element signature="e#4475#4476#0" expanded="true" />
-                <element signature="e#5124#5125#0" expanded="true" />
-                <element signature="e#5161#5162#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="MusicComposition.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/musicEditor/music/MusicComposition.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="707">
+            <state relative-caret-position="2992">
               <caret line="176" column="3" lean-forward="false" selection-start-line="176" selection-start-column="3" selection-end-line="176" selection-end-column="3" />
               <folding>
                 <element signature="e#1994#1995#0" expanded="true" />
@@ -95,31 +45,32 @@
       <file leaf-file-name="MusicEditorModel.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/musicEditor/model/MusicEditorModel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="129">
-              <caret line="110" column="34" lean-forward="false" selection-start-line="110" selection-start-column="34" selection-end-line="110" selection-end-column="34" />
+            <state relative-caret-position="170">
+              <caret line="10" column="59" lean-forward="false" selection-start-line="10" selection-start-column="59" selection-end-line="10" selection-end-column="59" />
               <folding>
-                <element signature="e#1130#1131#0" expanded="true" />
-                <element signature="e#1158#1159#0" expanded="true" />
-                <element signature="e#1339#1340#0" expanded="true" />
-                <element signature="e#1379#1380#0" expanded="true" />
-                <element signature="e#1501#1502#0" expanded="true" />
+                <element signature="imports" expanded="true" />
+                <element signature="e#1159#1160#0" expanded="true" />
+                <element signature="e#1187#1188#0" expanded="true" />
+                <element signature="e#1368#1369#0" expanded="true" />
+                <element signature="e#1408#1409#0" expanded="true" />
                 <element signature="e#1530#1531#0" expanded="true" />
-                <element signature="e#1681#1682#0" expanded="true" />
-                <element signature="e#1723#1724#0" expanded="true" />
-                <element signature="e#1764#1765#0" expanded="true" />
-                <element signature="e#1792#1793#0" expanded="true" />
-                <element signature="e#1849#1850#0" expanded="true" />
-                <element signature="e#1889#1890#0" expanded="true" />
-                <element signature="e#2020#2021#0" expanded="true" />
-                <element signature="e#2060#2061#0" expanded="true" />
-                <element signature="e#2770#2771#0" expanded="true" />
-                <element signature="e#2820#2821#0" expanded="true" />
-                <element signature="e#3353#3354#0" expanded="true" />
-                <element signature="e#3396#3397#0" expanded="true" />
-                <element signature="e#3582#3583#0" expanded="true" />
-                <element signature="e#3652#3653#0" expanded="true" />
-                <element signature="e#3805#3806#0" expanded="true" />
-                <element signature="e#3847#3848#0" expanded="true" />
+                <element signature="e#1559#1560#0" expanded="true" />
+                <element signature="e#1710#1711#0" expanded="true" />
+                <element signature="e#1752#1753#0" expanded="true" />
+                <element signature="e#1793#1794#0" expanded="true" />
+                <element signature="e#1821#1822#0" expanded="true" />
+                <element signature="e#1878#1879#0" expanded="true" />
+                <element signature="e#1918#1919#0" expanded="true" />
+                <element signature="e#2049#2050#0" expanded="true" />
+                <element signature="e#2089#2090#0" expanded="true" />
+                <element signature="e#2799#2800#0" expanded="true" />
+                <element signature="e#2849#2850#0" expanded="true" />
+                <element signature="e#3382#3383#0" expanded="true" />
+                <element signature="e#3425#3426#0" expanded="true" />
+                <element signature="e#3611#3612#0" expanded="true" />
+                <element signature="e#3681#3682#0" expanded="true" />
+                <element signature="e#3834#3835#0" expanded="true" />
+                <element signature="e#3876#3877#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -147,31 +98,61 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MusicEditorView.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="MusicEditorView.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/musicEditor/view/MusicEditorView.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="7" column="30" lean-forward="false" selection-start-line="7" selection-start-column="30" selection-end-line="7" selection-end-column="30" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="EditorPanel.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/musicEditor/gui/EditorPanel.java">
-          <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="51">
-              <caret line="3" column="38" lean-forward="true" selection-start-line="3" selection-start-column="38" selection-end-line="3" selection-end-column="38" />
+              <caret line="3" column="0" lean-forward="true" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PianoPanel.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/musicEditor/gui/PianoPanel.java">
+      <file leaf-file-name="IMusicEditorView.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/musicEditor/view/IMusicEditorView.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="85">
-              <caret line="5" column="75" lean-forward="false" selection-start-line="5" selection-start-column="75" selection-end-line="5" selection-end-column="75" />
+              <caret line="5" column="33" lean-forward="false" selection-start-line="5" selection-start-column="33" selection-end-line="5" selection-end-column="33" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="IMusicEditorModel.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/musicEditor/model/IMusicEditorModel.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="85">
+              <caret line="5" column="34" lean-forward="false" selection-start-line="5" selection-start-column="34" selection-end-line="5" selection-end-column="34" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MusicEditorController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/musicEditor/controller/MusicEditorController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="85">
+              <caret line="5" column="69" lean-forward="false" selection-start-line="5" selection-start-column="69" selection-end-line="5" selection-end-column="69" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="IMusicEditorController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/musicEditor/controller/IMusicEditorController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="85">
+              <caret line="5" column="39" lean-forward="false" selection-start-line="5" selection-start-column="39" selection-end-line="5" selection-end-column="39" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="EditorPanel.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/musicEditor/gui/EditorPanel.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="238">
+              <caret line="14" column="13" lean-forward="false" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
               <folding />
             </state>
           </provider>
@@ -180,43 +161,23 @@
       <file leaf-file-name="MusicRow.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/musicEditor/music/MusicRow.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="6" column="25" lean-forward="false" selection-start-line="6" selection-start-column="25" selection-end-line="6" selection-end-column="25" />
+            <state relative-caret-position="204">
+              <caret line="12" column="13" lean-forward="false" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
               <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#1907#1908#0" expanded="true" />
-                <element signature="e#1942#1943#0" expanded="true" />
-                <element signature="e#2052#2053#0" expanded="true" />
-                <element signature="e#2075#2076#0" expanded="true" />
-                <element signature="e#2220#2221#0" expanded="true" />
-                <element signature="e#2254#2255#0" expanded="true" />
-                <element signature="e#4588#4589#0" expanded="true" />
-                <element signature="e#4626#4627#0" expanded="true" />
-                <element signature="e#4880#4881#0" expanded="true" />
-                <element signature="e#4935#4936#0" expanded="true" />
-                <element signature="e#5248#5249#0" expanded="true" />
-                <element signature="e#5291#5292#0" expanded="true" />
-                <element signature="e#5431#5432#0" expanded="true" />
-                <element signature="e#5466#5467#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MusicTracker.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/musicEditor/music/MusicTracker.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="20" column="3" lean-forward="false" selection-start-line="20" selection-start-column="3" selection-end-line="20" selection-end-column="3" />
-              <folding>
-                <element signature="e#235#236#0" expanded="true" />
-                <element signature="e#256#257#0" expanded="true" />
-                <element signature="e#291#292#0" expanded="true" />
-                <element signature="e#317#318#0" expanded="true" />
-                <element signature="e#345#346#0" expanded="true" />
-                <element signature="e#368#369#0" expanded="true" />
-                <element signature="e#407#408#0" expanded="true" />
-                <element signature="e#437#438#0" expanded="true" />
+                <element signature="e#1794#1795#0" expanded="true" />
+                <element signature="e#1829#1830#0" expanded="true" />
+                <element signature="e#1939#1940#0" expanded="true" />
+                <element signature="e#1962#1963#0" expanded="true" />
+                <element signature="e#2107#2108#0" expanded="true" />
+                <element signature="e#2141#2142#0" expanded="true" />
+                <element signature="e#4475#4476#0" expanded="true" />
+                <element signature="e#4513#4514#0" expanded="true" />
+                <element signature="e#4767#4768#0" expanded="true" />
+                <element signature="e#4822#4823#0" expanded="true" />
+                <element signature="e#5135#5136#0" expanded="true" />
+                <element signature="e#5178#5179#0" expanded="true" />
+                <element signature="e#5318#5319#0" expanded="true" />
+                <element signature="e#5353#5354#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -227,8 +188,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Interface" />
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -266,17 +227,18 @@
         <option value="$PROJECT_DIR$/src/musicEditor/music/Repetition.java" />
         <option value="$PROJECT_DIR$/src/musicEditor/music/Tone.java" />
         <option value="$PROJECT_DIR$/src/musicEditor/gui/PianoPanel.java" />
-        <option value="$PROJECT_DIR$/src/musicEditor/view/MusicEditorView.java" />
         <option value="$PROJECT_DIR$/src/musicEditor/gui/MusicEditorFrame.java" />
         <option value="$PROJECT_DIR$/src/musicEditor/gui/RedLine.java" />
         <option value="$PROJECT_DIR$/src/musicEditor/music/Playback.java" />
         <option value="$PROJECT_DIR$/src/musicEditor/music/MusicTracker.java" />
         <option value="$PROJECT_DIR$/src/musicEditor/music/MusicPlayer.java" />
-        <option value="$PROJECT_DIR$/src/musicEditor/model/MusicEditorModel.java" />
         <option value="$PROJECT_DIR$/src/musicEditor/music/MusicComposition.java" />
         <option value="$PROJECT_DIR$/src/musicEditor/music/MusicSheet.java" />
         <option value="$PROJECT_DIR$/src/musicEditor/music/MusicRow.java" />
         <option value="$PROJECT_DIR$/src/musicEditor/gui/EditorPanel.java" />
+        <option value="$PROJECT_DIR$/src/musicEditor/controller/MusicEditorController.java" />
+        <option value="$PROJECT_DIR$/src/musicEditor/model/MusicEditorModel.java" />
+        <option value="$PROJECT_DIR$/src/musicEditor/view/MusicEditorView.java" />
       </list>
     </option>
   </component>
@@ -419,6 +381,10 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="musicEditor" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="controller" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -675,7 +641,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -842,14 +807,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/musicEditor/view/MusicEditorView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="30" lean-forward="false" selection-start-line="7" selection-start-column="30" selection-end-line="7" selection-end-column="30" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/musicEditor/music/Playback.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="51">
@@ -914,6 +871,46 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/musicEditor/music/MusicSheet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="140" column="18" lean-forward="true" selection-start-line="140" selection-start-column="18" selection-end-line="140" selection-end-column="18" />
+          <folding>
+            <element signature="e#2107#2108#0" expanded="true" />
+            <element signature="e#2135#2136#0" expanded="true" />
+            <element signature="e#2297#2298#0" expanded="true" />
+            <element signature="e#2333#2334#0" expanded="true" />
+            <element signature="e#4410#4411#0" expanded="true" />
+            <element signature="e#4475#4476#0" expanded="true" />
+            <element signature="e#5124#5125#0" expanded="true" />
+            <element signature="e#5161#5162#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/musicEditor/music/MusicRow.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="12" column="13" lean-forward="false" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
+          <folding>
+            <element signature="e#1794#1795#0" expanded="true" />
+            <element signature="e#1829#1830#0" expanded="true" />
+            <element signature="e#1939#1940#0" expanded="true" />
+            <element signature="e#1962#1963#0" expanded="true" />
+            <element signature="e#2107#2108#0" expanded="true" />
+            <element signature="e#2141#2142#0" expanded="true" />
+            <element signature="e#4475#4476#0" expanded="true" />
+            <element signature="e#4513#4514#0" expanded="true" />
+            <element signature="e#4767#4768#0" expanded="true" />
+            <element signature="e#4822#4823#0" expanded="true" />
+            <element signature="e#5135#5136#0" expanded="true" />
+            <element signature="e#5178#5179#0" expanded="true" />
+            <element signature="e#5318#5319#0" expanded="true" />
+            <element signature="e#5353#5354#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/musicEditor/music/MusicPlayer.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
@@ -934,40 +931,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/musicEditor/model/MusicEditorModel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="129">
-          <caret line="110" column="34" lean-forward="false" selection-start-line="110" selection-start-column="34" selection-end-line="110" selection-end-column="34" />
-          <folding>
-            <element signature="e#1130#1131#0" expanded="true" />
-            <element signature="e#1158#1159#0" expanded="true" />
-            <element signature="e#1339#1340#0" expanded="true" />
-            <element signature="e#1379#1380#0" expanded="true" />
-            <element signature="e#1501#1502#0" expanded="true" />
-            <element signature="e#1530#1531#0" expanded="true" />
-            <element signature="e#1681#1682#0" expanded="true" />
-            <element signature="e#1723#1724#0" expanded="true" />
-            <element signature="e#1764#1765#0" expanded="true" />
-            <element signature="e#1792#1793#0" expanded="true" />
-            <element signature="e#1849#1850#0" expanded="true" />
-            <element signature="e#1889#1890#0" expanded="true" />
-            <element signature="e#2020#2021#0" expanded="true" />
-            <element signature="e#2060#2061#0" expanded="true" />
-            <element signature="e#2770#2771#0" expanded="true" />
-            <element signature="e#2820#2821#0" expanded="true" />
-            <element signature="e#3353#3354#0" expanded="true" />
-            <element signature="e#3396#3397#0" expanded="true" />
-            <element signature="e#3582#3583#0" expanded="true" />
-            <element signature="e#3652#3653#0" expanded="true" />
-            <element signature="e#3805#3806#0" expanded="true" />
-            <element signature="e#3847#3848#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/musicEditor/music/MusicComposition.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="707">
+        <state relative-caret-position="2992">
           <caret line="176" column="3" lean-forward="false" selection-start-line="176" selection-start-column="3" selection-end-line="176" selection-end-column="3" />
           <folding>
             <element signature="e#1994#1995#0" expanded="true" />
@@ -982,51 +948,82 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/musicEditor/music/MusicSheet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="140" column="18" lean-forward="true" selection-start-line="140" selection-start-column="18" selection-end-line="140" selection-end-column="18" />
-          <folding>
-            <element signature="e#2107#2108#0" expanded="true" />
-            <element signature="e#2135#2136#0" expanded="true" />
-            <element signature="e#2297#2298#0" expanded="true" />
-            <element signature="e#2333#2334#0" expanded="true" />
-            <element signature="e#4410#4411#0" expanded="true" />
-            <element signature="e#4475#4476#0" expanded="true" />
-            <element signature="e#5124#5125#0" expanded="true" />
-            <element signature="e#5161#5162#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/musicEditor/music/MusicRow.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="25" lean-forward="false" selection-start-line="6" selection-start-column="25" selection-end-line="6" selection-end-column="25" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1907#1908#0" expanded="true" />
-            <element signature="e#1942#1943#0" expanded="true" />
-            <element signature="e#2052#2053#0" expanded="true" />
-            <element signature="e#2075#2076#0" expanded="true" />
-            <element signature="e#2220#2221#0" expanded="true" />
-            <element signature="e#2254#2255#0" expanded="true" />
-            <element signature="e#4588#4589#0" expanded="true" />
-            <element signature="e#4626#4627#0" expanded="true" />
-            <element signature="e#4880#4881#0" expanded="true" />
-            <element signature="e#4935#4936#0" expanded="true" />
-            <element signature="e#5248#5249#0" expanded="true" />
-            <element signature="e#5291#5292#0" expanded="true" />
-            <element signature="e#5431#5432#0" expanded="true" />
-            <element signature="e#5466#5467#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/musicEditor/gui/EditorPanel.java">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" column="13" lean-forward="false" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/musicEditor/view/IMusicEditorView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="33" lean-forward="false" selection-start-line="5" selection-start-column="33" selection-end-line="5" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/musicEditor/model/IMusicEditorModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="34" lean-forward="false" selection-start-line="5" selection-start-column="34" selection-end-line="5" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/musicEditor/controller/IMusicEditorController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="39" lean-forward="false" selection-start-line="5" selection-start-column="39" selection-end-line="5" selection-end-column="39" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/musicEditor/controller/MusicEditorController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="69" lean-forward="false" selection-start-line="5" selection-start-column="69" selection-end-line="5" selection-end-column="69" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/musicEditor/model/MusicEditorModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="59" lean-forward="false" selection-start-line="10" selection-start-column="59" selection-end-line="10" selection-end-column="59" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1159#1160#0" expanded="true" />
+            <element signature="e#1187#1188#0" expanded="true" />
+            <element signature="e#1368#1369#0" expanded="true" />
+            <element signature="e#1408#1409#0" expanded="true" />
+            <element signature="e#1530#1531#0" expanded="true" />
+            <element signature="e#1559#1560#0" expanded="true" />
+            <element signature="e#1710#1711#0" expanded="true" />
+            <element signature="e#1752#1753#0" expanded="true" />
+            <element signature="e#1793#1794#0" expanded="true" />
+            <element signature="e#1821#1822#0" expanded="true" />
+            <element signature="e#1878#1879#0" expanded="true" />
+            <element signature="e#1918#1919#0" expanded="true" />
+            <element signature="e#2049#2050#0" expanded="true" />
+            <element signature="e#2089#2090#0" expanded="true" />
+            <element signature="e#2799#2800#0" expanded="true" />
+            <element signature="e#2849#2850#0" expanded="true" />
+            <element signature="e#3382#3383#0" expanded="true" />
+            <element signature="e#3425#3426#0" expanded="true" />
+            <element signature="e#3611#3612#0" expanded="true" />
+            <element signature="e#3681#3682#0" expanded="true" />
+            <element signature="e#3834#3835#0" expanded="true" />
+            <element signature="e#3876#3877#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/musicEditor/view/MusicEditorView.java">
+      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="51">
-          <caret line="3" column="38" lean-forward="true" selection-start-line="3" selection-start-column="38" selection-end-line="3" selection-end-column="38" />
+          <caret line="3" column="0" lean-forward="true" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
           <folding />
         </state>
       </provider>
