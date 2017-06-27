@@ -90,6 +90,13 @@ public class MusicEditorModel implements IMusicEditorModel {
   }
   
   /**
+   * Sets the tempo of the music player
+   */
+  public void setTempo(int tempo) {
+    this.musicPlayer.setTempo(tempo);
+  }
+  
+  /**
    * Sets the current timbre in the musicTracker.
    */
   public void setTimbre(int timbre) {
