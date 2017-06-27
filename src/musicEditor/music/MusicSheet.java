@@ -142,28 +142,30 @@ public class MusicSheet {
   }
 
   /**
-   * Gets the list of tones at the specified beat from the sheet. Returns an empty list if no
-   * beats exist at that beat.
-   * @param beat where the Tones are being obtained
-   * @return the list of tones at the given beat
-   */
-  public List<Tone> getTonesAtBeat(int beat) {
-    if (this.isEmpty()) {
-      return new ArrayList<>();
-    }
-    List<Tone> result = new ArrayList<>();
-    for (Pitch p : this.sheet.keySet()) {
-      result.add(this.getTone(p, beat));
-    }
-    return result;
-  }
-
-  /**
    * Returns true is this sheet contains no rows.
    * @return whether or not this sheet contains rows
    */
   public boolean isEmpty() {
     return this.sheet.isEmpty();
+  }
+
+  /**
+   * Returns the number of beats within this sheet. Returns zero if this sheet is empty.
+   * @return the number of beats in this sheet
+   */
+  public int length() {
+    if (this.isEmpty()) {
+      return 0;
+    }
+    List<MusicRow> values = new ArrayList<>(this.sheet.values());
+    int result = values.get(0).length();
+    for (int i = 1; i < values.size(); i++) {
+      int length = values.get(i).length();
+      if (result < length) {
+        result = length;
+      }
+    }
+    return result;
   }
 
   /**
@@ -197,24 +199,5 @@ public class MusicSheet {
     // add the last pitch which was not added during the loop
     range.add(last);
     return range;
-  }
-
-  /**
-   * Returns the number of beats within this sheet. Returns zero if this sheet is empty.
-   * @return the number of beats in this sheet
-   */
-  public int length() {
-    if (this.isEmpty()) {
-      return 0;
-    }
-    List<MusicRow> values = new ArrayList<>(this.sheet.values());
-    int result = values.get(0).length();
-    for (int i = 1; i < values.size(); i++) {
-      int length = values.get(i).length();
-      if (result < length) {
-        result = length;
-      }
-    }
-    return result;
   }
 }

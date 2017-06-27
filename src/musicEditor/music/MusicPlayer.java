@@ -27,6 +27,14 @@ public class MusicPlayer {
     this.tempo = tempo;
   }
 
+  public Sequencer getSequencer() {
+    return sequencer;
+  }
+
+  public void setSequencer(Sequencer sequencer) {
+    this.sequencer = sequencer;
+  }
+
   public void play() {
     this.sequencer.start();
     this.sequencer.setTempoInMPQ(this.tempo);
@@ -56,6 +64,7 @@ public class MusicPlayer {
         }
       }
       this.sequencer.setSequence(sequence);
+      this.sequencer.setLoopEndPoint(composition.length());
     } catch (InvalidMidiDataException e) {
       e.printStackTrace();
     }

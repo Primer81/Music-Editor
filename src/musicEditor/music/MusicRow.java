@@ -1,6 +1,10 @@
 package musicEditor.music;
 
-import java.util.*;
+import java.util.Collection;
+import java.util.Map;
+import java.util.SortedMap;
+import java.util.SortedSet;
+import java.util.TreeMap;
 
 /**
  * Represents a line or row on a piece of sheet music.

@@ -128,40 +128,11 @@ public class MusicComposition {
   }
 
   /**
-   * Gets the list of tones at the specified beat from the specified sheet.
-   * Returns an empty list if no beats exist at that beat.
-   * @param timbre the sheet that the Tones are being obtained from
-   * @param beat the beat where the Tones are being obtained from
-   * @return the list of tones at the given beat
-   */
-  public List<Tone> getTonesAtBeat(int timbre, int beat) {
-    if (!this.composition.containsKey(timbre)) {
-      return new ArrayList<>();
-    }
-    MusicSheet sheet = this.composition.get(timbre);
-    return sheet.getTonesAtBeat(beat);
-  }
-
-  /**
    * Returns true if this composition contains no MusicSheets.
    * @return whether this composition contains MusicSheets
    */
   public boolean isEmpty() {
     return this.composition.isEmpty() && this.features.isEmpty();
-  }
-
-  /**
-   * Returns the full sorted range of Pitches in from the sheet with the specified timbre
-   * from lowest pitch to the highest pitch. Returns an empty set if the sheet does not exist.
-   * highest pitch.
-   * @return a full sorted range of Pitches in this sheet
-   */
-  public SortedSet<Pitch> range(int timbre) {
-    if (!this.composition.containsKey(timbre)) {
-      return new TreeSet<>();
-    }
-    MusicSheet sheet = this.composition.get(timbre);
-    return sheet.range();
   }
 
   /**
@@ -189,6 +160,20 @@ public class MusicComposition {
       }
     }
     return result;
+  }
+
+  /**
+   * Returns the full sorted range of Pitches in from the sheet with the specified timbre
+   * from lowest pitch to the highest pitch. Returns an empty set if the sheet does not exist.
+   * highest pitch.
+   * @return a full sorted range of Pitches in this sheet
+   */
+  public SortedSet<Pitch> range(int timbre) {
+    if (!this.composition.containsKey(timbre)) {
+      return new TreeSet<>();
+    }
+    MusicSheet sheet = this.composition.get(timbre);
+    return sheet.range();
   }
 
   /**

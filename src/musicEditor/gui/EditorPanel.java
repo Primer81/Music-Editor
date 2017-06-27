@@ -1,6 +1,9 @@
 package musicEditor.gui;
 
-import musicEditor.music.*;
+import musicEditor.music.MusicComposition;
+import musicEditor.music.MusicTracker;
+import musicEditor.music.Pitch;
+import musicEditor.music.Tone;
 
 import javax.swing.JPanel;
 import java.awt.Color;

@@ -2,7 +2,6 @@ package musicEditor.model;
 
 import musicEditor.music.*;
 
-import java.util.List;
 import java.util.SortedSet;
 
 /**
@@ -112,16 +111,6 @@ public class MusicEditorModel {
   public Tone getTone(Pitch pitch) {
     return this.composition.getTone(
         this.musicTracker.getTimbre(), pitch, this.musicTracker.getBeat());
-  }
-
-  /**
-   * Gets the all the tones from the composition at this model's current beat from the
-   * sheet with the model's current timbre. Returns an empty list if no tones exists.
-   * @return the list of tones at the the current beat from the sheet with the current timbre
-   */
-  public List<Tone> getTonesAtBeat() {
-    return this.composition.getTonesAtBeat(
-        this.musicTracker.getTimbre(), this.musicTracker.getBeat());
   }
 
   /**
