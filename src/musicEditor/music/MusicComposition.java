@@ -1,12 +1,6 @@
 package musicEditor.music;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.SortedMap;
-import java.util.SortedSet;
-import java.util.TreeMap;
-import java.util.TreeSet;
+import java.util.*;
 
 /**
  * Represents a composition of music. Contains a Map with integer keys representing timbre which
@@ -55,12 +49,11 @@ public class MusicComposition {
   }
 
   /**
-   * Gets a copy of the specified sheet.
-   * @param timbre the timbre of the sheet
-   * @return the sheet with the given timbre
+   * Gets the music sheets that make up this composition.
+   * @return a collection of the music sheets in this composition
    */
-  public MusicSheet getSheet(int timbre) {
-    return this.composition.get(timbre).clone();
+  public Collection<MusicSheet> getSheets() {
+    return this.composition.values();
   }
 
   /**

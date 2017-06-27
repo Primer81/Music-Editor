@@ -64,6 +64,14 @@ public class MusicRow {
   }
 
   /**
+   * Gets all the tones that make up this row.
+   * @return a collection of this row's Tones
+   */
+  public Collection<Tone> getTones() {
+    return this.row.values();
+  }
+
+  /**
    * Validates the given row by checking to see if any Tones exist within another Tone's duration.
    * Also ensures that the Tone's start value matches its key value.
    * @param row the row being validated
@@ -95,7 +103,7 @@ public class MusicRow {
     if (!(tone.getPitch().equals(this.PITCH))) {
       throw new IllegalArgumentException("given tone does not match this row's pitch");
     }
-    if (!(tone.getTimbre() != this.TIMBRE)) {
+    if (tone.getTimbre() != this.TIMBRE) {
       throw new IllegalArgumentException("given tone does not match this row's timbre");
     }
     // check for overlaps
@@ -172,10 +180,5 @@ public class MusicRow {
     int lastBeat = keys.last();
     Tone lastTone = this.row.get(lastBeat);
     return lastBeat + lastTone.getDuration();
-  }
-
-  @Override
-  public MusicRow clone() {
-    return new MusicRow(this.PITCH, this.TIMBRE, new TreeMap<>(this.row));
   }
 }

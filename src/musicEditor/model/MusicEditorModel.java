@@ -1,9 +1,6 @@
 package musicEditor.model;
 
-import musicEditor.music.MusicComposition;
-import musicEditor.music.MusicSheet;
-import musicEditor.music.Pitch;
-import musicEditor.music.Tone;
+import musicEditor.music.*;
 
 import java.util.List;
 import java.util.SortedSet;
@@ -14,9 +11,8 @@ import java.util.SortedSet;
  */
 public class MusicEditorModel {
   private MusicComposition composition;
-  private int beat;
-  private int tempo;
-  private int timbre;
+  private MusicTracker musicTracker;
+  private MusicPlayer musicPlayer;
 
   /**
    * Default constructor for a MusicEditorModel.
@@ -24,8 +20,8 @@ public class MusicEditorModel {
    */
   public MusicEditorModel() {
     this.composition = new MusicComposition();
-    this.tempo = 1;
-    this.timbre = 1;
+    this.musicTracker = new MusicTracker();
+    this.musicPlayer = new MusicPlayer();
   }
 
   /**
@@ -55,59 +51,27 @@ public class MusicEditorModel {
   }
 
   /**
-   * Gets this MusicEditorModel's beat.
-   * @return this MusicEditorModel's beat
+   * Gets this model's MusicTracker.
+   * @return the MusicTracker
    */
-  public int getBeat() {
-    return beat;
+  public MusicTracker getMusicTracker() {
+    return musicTracker;
   }
 
   /**
-   * Sets this MusicEditorModel's beat.
-   * @param beat this MusicEditorModel's beat
+   * Sets this model's MusicTracker.
+   * @param musicTracker the MusicTracker
    */
-  public void setBeat(int beat) {
-    this.beat = beat;
+  public void setMusicTracker(MusicTracker musicTracker) {
+    this.musicTracker = musicTracker;
   }
 
-  /**
-   * Gets this MusicEditorModel's tempo.
-   * @return this MusicEditorModel's tempo
-   */
-  public int getTempo() {
-    return tempo;
+  public MusicPlayer getMusicPlayer() {
+    return musicPlayer;
   }
 
-  /**
-   * Sets this MusicEditorModel's tempo.
-   * @param tempo this MusicEditorModel's tempo
-   */
-  public void setTempo(int tempo) {
-    this.tempo = tempo;
-  }
-
-  /**
-   * Gets this MusicEditorModel's timbre.
-   * @return this MusicEditorModel's timbre
-   */
-  public int getTimbre() {
-    return timbre;
-  }
-
-  /**
-   * Sets this MusicEditorModel's timbre.
-   * @param timbre this MusicEditorModel's timbre
-   */
-  public void setTimbre(int timbre) {
-    this.timbre = timbre;
-  }
-
-  /**
-   * Returns a copy of the music sheet that this model is currently on.
-   * @return a copy of this model's current music sheet
-   */
-  public MusicSheet getSheet() {
-    return this.composition.getSheet(this.timbre);
+  public void setMusicPlayer(MusicPlayer musicPlayer) {
+    this.musicPlayer = musicPlayer;
   }
 
   /**
@@ -125,7 +89,8 @@ public class MusicEditorModel {
    * @return the tone removed
    */
   public Tone removeTone(Pitch pitch) {
-    return this.composition.removeTone(this.timbre, pitch, this.beat);
+    return this.composition.removeTone(
+        this.musicTracker.getTimbre(), pitch, this.musicTracker.getBeat());
   }
 
   /**
@@ -145,7 +110,8 @@ public class MusicEditorModel {
    * @return the tone with the specified pitch
    */
   public Tone getTone(Pitch pitch) {
-    return this.composition.getTone(this.timbre, pitch, this.beat);
+    return this.composition.getTone(
+        this.musicTracker.getTimbre(), pitch, this.musicTracker.getBeat());
   }
 
   /**
@@ -154,7 +120,8 @@ public class MusicEditorModel {
    * @return the list of tones at the the current beat from the sheet with the current timbre
    */
   public List<Tone> getTonesAtBeat() {
-    return this.composition.getTonesAtBeat(this.timbre, this.beat);
+    return this.composition.getTonesAtBeat(
+        this.musicTracker.getTimbre(), this.musicTracker.getBeat());
   }
 
   /**
@@ -170,7 +137,7 @@ public class MusicEditorModel {
    * @return the full range of pitches of the sheet with the current timbre
    */
   public SortedSet<Pitch> range() {
-    return this.composition.range(this.timbre);
+    return this.composition.range(this.musicTracker.getTimbre());
   }
 
   /**

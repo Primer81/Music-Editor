@@ -1,8 +1,6 @@
 package musicEditor.gui;
 
-import musicEditor.music.MusicSheet;
-import musicEditor.music.Pitch;
-import musicEditor.music.Tone;
+import musicEditor.music.*;
 
 import javax.swing.JPanel;
 import java.awt.Color;
@@ -17,15 +15,16 @@ import java.util.SortedSet;
 public class EditorPanel extends JPanel {
   private final int CELL_WIDTH = 20;
   private final int CELL_HEIGHT = 20;
-  private MusicSheet sheet;
-  private int beat;
+  private MusicComposition composition;
+  private MusicTracker musicTracker;
 
   /**
    * Creates a new EditorPanel with a double buffer and a flow layout.
    */
-  public EditorPanel(MusicSheet sheet) {
+  public EditorPanel(MusicComposition composition, MusicTracker musicTracker) {
     super();
-    this.sheet = sheet;
+    this.composition = composition;
+    this.musicTracker = musicTracker;
   }
 
   @Override
@@ -37,8 +36,9 @@ public class EditorPanel extends JPanel {
   @Override
   public Dimension getPreferredSize() {
     return new Dimension(
-        (this.sheet.length() + 1) * this.CELL_WIDTH,
-        (this.sheet.range().size() + 1) * this.CELL_HEIGHT);
+        (this.composition.length() + 1) * this.CELL_WIDTH,
+        (this.composition.range(
+            this.musicTracker.getTimbre()).size() + 1) * this.CELL_HEIGHT);
   }
 
   /**
@@ -49,8 +49,9 @@ public class EditorPanel extends JPanel {
   private void paintSheet(Graphics g) {
     Rectangle drawHere = g.getClipBounds();
 
-    SortedSet<Pitch> range = this.sheet.range();
-    int length = this.sheet.length();
+    int timbre = this.musicTracker.getTimbre();
+    SortedSet<Pitch> range = this.composition.range(timbre);
+    int length = this.composition.length();
 
     int col = length;
     int row = range.size();
@@ -59,7 +60,7 @@ public class EditorPanel extends JPanel {
     int curRow = 0;
     for (Pitch p : range) {
       for (int curCol = 0; curCol < length; curCol++) {
-        Tone tone = this.sheet.getTone(p, curCol);
+        Tone tone = this.composition.getTone(timbre, p, curCol);
         if (tone != null) {
           // creates a rectangle to represent the start of the tone and draws it if it
           // intersects the clipping area
@@ -107,7 +108,7 @@ public class EditorPanel extends JPanel {
     }
 
     // draws the red line
-    int x = this.beat * this.CELL_WIDTH;
+    int x = this.musicTracker.getBeat() * this.CELL_WIDTH;
     int y = range.size() * this.CELL_HEIGHT;
     if (drawHere.intersectsLine(x, 0, x, y)) {
       g.drawLine(x, 0, x, y);

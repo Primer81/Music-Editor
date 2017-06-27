@@ -55,12 +55,11 @@ public class MusicSheet {
   }
 
   /**
-   * Gets a copy of the specified row.
-   * @param pitch the pitch of the row
-   * @return the row with the given pitch
+   * Gets all the music rows that make up this sheet.
+   * @return a collection of this sheet's music rows
    */
-  public MusicRow getRow(Pitch pitch) {
-    return this.sheet.get(pitch).clone();
+  public Collection<MusicRow> getRows() {
+    return this.sheet.values();
   }
 
   /**
@@ -217,10 +216,5 @@ public class MusicSheet {
       }
     }
     return result;
-  }
-
-  @Override
-  public MusicSheet clone() {
-    return new MusicSheet(this.TIMBRE, new TreeMap<>(this.sheet));
   }
 }
