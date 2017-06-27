@@ -1,10 +1,8 @@
 package musicEditor.gui;
 
-import musicEditor.music.MusicComposition;
-import musicEditor.music.MusicTracker;
-import musicEditor.music.Pitch;
-import musicEditor.music.Tone;
+import musicEditor.music.*;
 
+import javax.sound.midi.Sequencer;
 import javax.swing.*;
 import java.awt.*;
 import java.util.SortedSet;
@@ -17,14 +15,17 @@ public class EditorPanel extends JPanel {
   private final int CELL_HEIGHT = 20;
   private MusicComposition composition;
   private MusicTracker musicTracker;
+  private MusicPlayer musicPlayer;
 
   /**
    * Creates a new EditorPanel with a double buffer and a flow layout.
    */
-  public EditorPanel(MusicComposition composition, MusicTracker musicTracker) {
+  public EditorPanel(MusicComposition composition,
+                     MusicTracker musicTracker, MusicPlayer musicPlayer) {
     super();
     this.composition = composition;
     this.musicTracker = musicTracker;
+    this.musicPlayer = musicPlayer;
   }
 
   @Override
@@ -108,7 +109,8 @@ public class EditorPanel extends JPanel {
     }
 
     // draws the red line
-    int x = this.musicTracker.getBeat() * this.CELL_WIDTH;
+    Sequencer sequencer = this.musicPlayer.getSequencer();
+    int x = (int) sequencer.getTickPosition() * this.CELL_WIDTH;
     int y = range.size() * this.CELL_HEIGHT;
     if (drawHere.intersectsLine(x, 0, x, y)) {
       g.drawLine(x, 0, x, y);

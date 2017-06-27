@@ -2,6 +2,7 @@ package musicEditor.model;
 
 import musicEditor.music.*;
 
+import javax.sound.midi.Sequencer;
 import java.util.SortedSet;
 
 /**
@@ -88,8 +89,9 @@ public class MusicEditorModel implements IMusicEditorModel {
    * @return the tone removed
    */
   public Tone removeTone(Pitch pitch) {
+    Sequencer sequencer = this.musicPlayer.getSequencer();
     return this.composition.removeTone(
-        this.musicTracker.getTimbre(), pitch, this.musicTracker.getBeat());
+        this.musicTracker.getTimbre(), pitch, (int) sequencer.getTickPosition());
   }
 
   /**
@@ -100,17 +102,6 @@ public class MusicEditorModel implements IMusicEditorModel {
    */
   public boolean removedTone(Tone tone) {
     return this.composition.removeTone(tone);
-  }
-
-  /**
-   * Gets the tone with the specified pitch from the composition if it exists. Returns null
-   * if it could not be found.
-   * @param pitch the pitch of the tone being returned
-   * @return the tone with the specified pitch
-   */
-  public Tone getTone(Pitch pitch) {
-    return this.composition.getTone(
-        this.musicTracker.getTimbre(), pitch, this.musicTracker.getBeat());
   }
 
   /**
