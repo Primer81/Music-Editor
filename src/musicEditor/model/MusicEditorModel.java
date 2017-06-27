@@ -1,7 +1,7 @@
 package musicEditor.model;
 
 import musicEditor.music.*;
-
+  
 import javax.sound.midi.Sequencer;
 import java.util.SortedSet;
 
@@ -66,14 +66,36 @@ public class MusicEditorModel implements IMusicEditorModel {
     this.musicTracker = musicTracker;
   }
 
+  /**
+   * Gets this model's MusicPlayer.
+   * @return the music player
+   */
   public MusicPlayer getMusicPlayer() {
     return musicPlayer;
   }
 
+  /**
+   * Sets this model's MusicPlayer.
+   * @param the music player
+   */
   public void setMusicPlayer(MusicPlayer musicPlayer) {
     this.musicPlayer = musicPlayer;
   }
-
+  
+  /**
+   * Sequences the composition in the music player.
+   */
+  public void sequenceComposition() {
+    this.musicPlayer.sequenceComposition(this.composition);
+  }
+  
+  /**
+   * Sets the current timbre in the musicTracker.
+   */
+  public void setTimbre(int timbre) {
+    this.musicTracker.setTimbre(timbre);
+  }
+  
   /**
    * Adds the given tone to the composition.
    * @param tone the tone to be added
