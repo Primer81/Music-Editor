@@ -10,6 +10,8 @@ import musicEditor.music.MusicTracker;
 
 import javax.sound.midi.MetaEventListener;
 import javax.swing.*;
+import javax.swing.text.View;
+import java.awt.*;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseListener;
 
@@ -17,6 +19,9 @@ import java.awt.event.MouseListener;
  * Represents the view for the music editor.
  */
 public class MusicEditorView implements IMusicEditorView {
+  private final int CELL_WIDTH = 20;
+  private final int CELL_HEIGHT = 20;
+
   private MusicComposition composition;
   private MusicTracker tracker;
   private MusicPlayer player;
@@ -64,17 +69,17 @@ public class MusicEditorView implements IMusicEditorView {
 
   @Override
   public void addKeyListener(KeyListener listener) {
-
+    this.upperScrollPane.addKeyListener(listener);
   }
 
   @Override
   public void addMouseListener(MouseListener listener) {
-
+    this.pianoPanel.addMouseListener(listener);
   }
 
   @Override
   public void addMetaEventListener(MetaEventListener listener) {
-
+    this.player.getSequencer().addMetaEventListener(listener);
   }
 
   @Override
@@ -86,6 +91,16 @@ public class MusicEditorView implements IMusicEditorView {
 
   @Override
   public void update() {
+    // moves the view to where the beat is
+    int beat = (int) this.player.getSequencer().getTickPosition();
+    int viewWidth = this.upperScrollPane.getViewport().getWidth();
+    int beatPerView = viewWidth / this.CELL_WIDTH;
+    int page = beat - (beat % beatPerView);
+    int x = page * this.CELL_WIDTH;
+    JViewport viewport = this.upperScrollPane.getViewport();
+    viewport.setViewPosition(new Point(x, viewport.getViewPosition().y));
+    // repaints the gui
     this.upperScrollPane.repaint();
+    this.pianoPanel.repaint();
   }
 }
