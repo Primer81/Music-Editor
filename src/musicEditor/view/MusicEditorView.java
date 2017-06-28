@@ -1,10 +1,11 @@
 package musicEditor.view;
 
 import musicEditor.gui.EditorPanel;
+import musicEditor.gui.MeasuresComponent;
 import musicEditor.gui.PianoPanel;
+import musicEditor.gui.PitchesComponent;
 import musicEditor.music.MusicComposition;
 import musicEditor.music.MusicPlayer;
-import musicEditor.music.MusicSheet;
 import musicEditor.music.MusicTracker;
 
 import javax.sound.midi.MetaEventListener;
@@ -19,8 +20,12 @@ public class MusicEditorView implements IMusicEditorView {
   private MusicComposition composition;
   private MusicTracker tracker;
   private MusicPlayer player;
-  
+
+  private JScrollPane upperScrollPane;
+  private JComponent measuresComponent;
+  private JComponent pitchesComponent;
   private JPanel editorPanel;
+
   private JPanel pianoPanel;
   
   /**
@@ -31,9 +36,15 @@ public class MusicEditorView implements IMusicEditorView {
     this.composition = composition;
     this.tracker = tracker;
     this.player = player;
-    
+
+    this.measuresComponent = new MeasuresComponent(composition, tracker, player);
+    this.pitchesComponent = new PitchesComponent(composition, tracker, player);
     this.editorPanel = new EditorPanel(composition, tracker, player);
     this.pianoPanel = new PianoPanel(composition, tracker, player);
+
+    this.upperScrollPane = new JScrollPane(this.editorPanel);
+    this.upperScrollPane.setColumnHeaderView(this.pitchesComponent);
+    this.upperScrollPane.setRowHeaderView(this.measuresComponent);
   }
 
   @Override
@@ -69,10 +80,12 @@ public class MusicEditorView implements IMusicEditorView {
   @Override
   public void initialize() {
     JFrame frame = new JFrame();
+    frame.add(this.upperScrollPane);
+    frame.setVisible(true);
   }
 
   @Override
   public void update() {
-    
+    this.upperScrollPane.repaint();
   }
 }
