@@ -6,23 +6,24 @@ import musicEditor.music.MusicSheet;
  * Represents the view for the music editor.
  */
 public class MusicEditorView implements IMusicEditorView {
-  private JPanel editorPanel;
-  private JPanel pianoPanel;
-  
   private MusicComposition composition;
   private MusicTracker tracker;
   private MusicPlayer player;
   
+  private JPanel editorPanel;
+  private JPanel pianoPanel;
+  
   /**
    * Constructs new MusicEditorView with default fields.
    */
-  public MusicEditorView() {
-    this.editorPanel = new EditorPanel();
-    this.pianoPanel = new PianoPanel();
+  public MusicEditorView(MusicComposition composition,
+                         MusicTracker tracker, MusicPlayer player) {
+    this.composition = composition;
+    this.tracker = tracker;
+    this.player = player;
     
-    this.composition = new MusicComposition();
-    this.tracker = new MusicTracker();
-    this.player = new MusicPlayer();
+    this.editorPanel = new EditorPanel(composition, player, tracker);
+    this.pianoPanel = new PianoPanel(composition, player, tracker);
   }
   
   public void setComposition(MusicComposition composition) {
