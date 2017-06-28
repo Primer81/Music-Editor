@@ -11,8 +11,8 @@ import java.util.SortedSet;
  */
 public class MusicEditorModel implements IMusicEditorModel {
   private MusicComposition composition;
-  private MusicTracker musicTracker;
-  private MusicPlayer musicPlayer;
+  private MusicTracker tracker;
+  private MusicPlayer player;
 
   /**
    * Default constructor for a MusicEditorModel.
@@ -20,8 +20,8 @@ public class MusicEditorModel implements IMusicEditorModel {
    */
   public MusicEditorModel() {
     this.composition = new MusicComposition();
-    this.musicTracker = new MusicTracker();
-    this.musicPlayer = new MusicPlayer();
+    this.tracker = new MusicTracker();
+    this.player = new MusicPlayer();
   }
 
   /**
@@ -34,125 +34,79 @@ public class MusicEditorModel implements IMusicEditorModel {
     this.composition = composition;
   }
 
-  /**
-   * Gets this MusicEditorModel's composition.
-   * @return this MusicEditorModel's composition
-   */
+  @Override
   public MusicComposition getComposition() {
     return composition;
   }
 
-  /**
-   * Sets this MusicEditorModel's composition.
-   * @param composition this MusicEditorModel's composition
-   */
+  @Override
   public void setComposition(MusicComposition composition) {
     this.composition = composition;
   }
 
-  /**
-   * Gets this model's MusicTracker.
-   * @return the MusicTracker
-   */
-  public MusicTracker getMusicTracker() {
-    return musicTracker;
+  @Override
+  public MusicTracker getTracker() {
+    return tracker;
   }
 
-  /**
-   * Sets this model's MusicTracker.
-   * @param musicTracker the MusicTracker
-   */
-  public void setMusicTracker(MusicTracker musicTracker) {
-    this.musicTracker = musicTracker;
+  @Override
+  public void setTracker(MusicTracker musicTracker) {
+    this.tracker = musicTracker;
   }
 
-  /**
-   * Gets this model's MusicPlayer.
-   * @return the music player
-   */
-  public MusicPlayer getMusicPlayer() {
-    return musicPlayer;
+  @Override
+  public MusicPlayer getPlayer() {
+    return player;
   }
 
-  /**
-   * Sets this model's MusicPlayer.
-   * @param musicPlayer the music player
-   */
-  public void setMusicPlayer(MusicPlayer musicPlayer) {
-    this.musicPlayer = musicPlayer;
+  @Override
+  public void setPlayer(MusicPlayer player) {
+    this.player = player;
   }
-  
-  /**
-   * Sequences the composition in the music player.
-   */
+
+  @Override
   public void sequenceComposition() {
-    this.musicPlayer.sequenceComposition(this.composition);
+    this.player.sequenceComposition(this.composition);
   }
-  
-  /**
-   * Sets the tempo of the music player
-   */
+
+  @Override
   public void setTempo(int tempo) {
-    this.musicPlayer.setTempo(tempo);
+    this.player.setTempo(tempo);
   }
-  
-  /**
-   * Sets the current timbre in the musicTracker.
-   */
+
+  @Override
   public void setTimbre(int timbre) {
-    this.musicTracker.setTimbre(timbre);
+    this.tracker.setTimbre(timbre);
   }
-  
-  /**
-   * Adds the given tone to the composition.
-   * @param tone the tone to be added
-   */
+
+  @Override
   public void addTone(Tone tone) {
     this.composition.addTone(tone);
   }
 
-  /**
-   * Removes the tone of the specified pitch and returns it if it exists. Returns null otherwise.
-   * Uses this model's current timbre and beat to find and remove the note.
-   * @param pitch the pitch of the tone being removed
-   * @return the tone removed
-   */
+  @Override
   public Tone removeTone(Pitch pitch) {
-    Sequencer sequencer = this.musicPlayer.getSequencer();
+    Sequencer sequencer = this.player.getSequencer();
     return this.composition.removeTone(
-        this.musicTracker.getTimbre(), pitch, (int) sequencer.getTickPosition());
+        this.tracker.getTimbre(), pitch, (int) sequencer.getTickPosition());
   }
 
-  /**
-   * Removes the given tone from the composition if it exists. Returns true if it could be found
-   * and removed; false otherwise.
-   * @param tone the tone to be removed
-   * @return whether the tone was found and removed
-   */
+  @Override
   public boolean removedTone(Tone tone) {
     return this.composition.removeTone(tone);
   }
 
-  /**
-   * Returns true if this model contains no music.
-   * @return whether this model contains music.
-   */
+  @Override
   public boolean isEmpty() {
     return this.composition.isEmpty();
   }
 
-  /**
-   * Returns the full range of pitches of the current sheet.
-   * @return the full range of pitches of the sheet with the current timbre
-   */
+  @Override
   public SortedSet<Pitch> range() {
-    return this.composition.range(this.musicTracker.getTimbre());
+    return this.composition.range(this.tracker.getTimbre());
   }
 
-  /**
-   * The number of beats long the composition is.
-   * @return the number of beats long this model's composition is
-   */
+  @Override
   public int length() {
     return this.composition.length();
   }
