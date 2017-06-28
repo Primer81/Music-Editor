@@ -21,28 +21,28 @@ public class MusicEditorController implements IMusicEditorController {
   /**
    * Constructs a MusicEditorController.
    *
-   * @param m The model
+   * @param model The model
    */
-  public MusicEditorController(IMusicEditorModel m)
+  public MusicEditorController(IMusicEditorModel model)
   {
-    model = m;
+    this.model = model;
   }
 
   /**
    * Sets the view for the controller and displays it.
-   * @param v The view
+   * @param view The view
    * @throws InvalidMidiDataException If there is any invalid MIDI data
    */
-  public void setView(IMusicEditorView v) throws InvalidMidiDataException {
-    view = v;
-    v.setComposition(this.model.getComposition());
-    v.setTracker(this.model.getTracker());
-    v.setPlayer(this.model.getPlayer());
+  public void setView(IMusicEditorView view) throws InvalidMidiDataException {
+    this.view = view;
+    view.setComposition(this.model.getComposition());
+    view.setTracker(this.model.getTracker());
+    view.setPlayer(this.model.getPlayer());
     //create and set the listeners
     this.configureKeyBoardListener();
     this.configureMouseKeyListener();
     this.configureMetaEventsListener();
-    v.initialize();
+    view.initialize();
   }
 
   /**

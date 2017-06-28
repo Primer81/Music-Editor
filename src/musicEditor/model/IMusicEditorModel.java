@@ -1,6 +1,10 @@
 package musicEditor.model;
 
-import musicEditor.music.*;
+import musicEditor.music.MusicComposition;
+import musicEditor.music.MusicPlayer;
+import musicEditor.music.MusicTracker;
+import musicEditor.music.Pitch;
+import musicEditor.music.Tone;
 
 import java.util.SortedSet;
 

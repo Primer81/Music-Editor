@@ -13,19 +13,19 @@ import java.awt.event.MouseListener;
  */
 public interface IMusicEditorView {
 
-  public void setComposition(MusicComposition composition);
+  void setComposition(MusicComposition composition);
 
-  public void setTracker(MusicTracker tracker);
+  void setTracker(MusicTracker tracker);
 
-  public void setPlayer(MusicPlayer player);
+  void setPlayer(MusicPlayer player);
 
-  public void addKeyListener(KeyListener listener);
+  void addKeyListener(KeyListener listener);
 
-  public void addMouseListener(MouseListener listener);
+  void addMouseListener(MouseListener listener);
 
-  public void addMetaEventListener(MetaEventListener listener);
+  void addMetaEventListener(MetaEventListener listener);
 
-  public void initialize();
+  void initialize();
 
-  public void update();
+  void update();
 }
