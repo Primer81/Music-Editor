@@ -1,6 +1,13 @@
 package musicEditor.view;
 
+import musicEditor.gui.EditorPanel;
+import musicEditor.gui.PianoPanel;
+import musicEditor.music.MusicComposition;
+import musicEditor.music.MusicPlayer;
 import musicEditor.music.MusicSheet;
+import musicEditor.music.MusicTracker;
+
+import javax.swing.*;
 
 /**
  * Represents the view for the music editor.
@@ -22,8 +29,8 @@ public class MusicEditorView implements IMusicEditorView {
     this.tracker = tracker;
     this.player = player;
     
-    this.editorPanel = new EditorPanel(composition, player, tracker);
-    this.pianoPanel = new PianoPanel(composition, player, tracker);
+    this.editorPanel = new EditorPanel(composition, tracker, player);
+    this.pianoPanel = new PianoPanel(composition, tracker, player);
   }
   
   public void setComposition(MusicComposition composition) {
@@ -39,7 +46,7 @@ public class MusicEditorView implements IMusicEditorView {
   }
 
   public void initialize() {
-    JFrame frame = new Jframe();
+    JFrame frame = new JFrame();
   }
   
   public void update() {
