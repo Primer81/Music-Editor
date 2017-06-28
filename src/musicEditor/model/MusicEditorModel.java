@@ -76,7 +76,7 @@ public class MusicEditorModel implements IMusicEditorModel {
 
   /**
    * Sets this model's MusicPlayer.
-   * @param the music player
+   * @param musicPlayer the music player
    */
   public void setMusicPlayer(MusicPlayer musicPlayer) {
     this.musicPlayer = musicPlayer;
