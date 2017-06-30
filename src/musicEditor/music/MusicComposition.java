@@ -1,5 +1,7 @@
 package musicEditor.music;
 
+import musicEditor.util.CompositionBuilder;
+
 import java.util.*;
 
 /**
@@ -76,8 +78,11 @@ public class MusicComposition {
    * @param tone the tone being added
    */
   public void addTone(Tone tone) {
-    MusicSheet sheet = this.composition.get(tone.getTimbre());
-    sheet.addTone(tone);
+    int timbre = tone.getTimbre();
+    if (!this.composition.containsKey(timbre)) {
+      this.composition.put(timbre, new MusicSheet(timbre));
+    }
+    this.composition.get(timbre).addTone(tone);
   }
 
   /**

@@ -24,6 +24,21 @@ public class Pitch implements Comparable<Pitch> {
   }
 
   /**
+   * Constructs a Pitch given the specified midiPitch to represent a pitch.
+   * @param midiPitch the midiPitch value
+   */
+  public Pitch(int midiPitch) {
+    if (midiPitch < 0) {
+      throw new IllegalArgumentException("midiPitch cannot be negative");
+    }
+    if (midiPitch > 127) {
+      throw new IllegalArgumentException("midiPitch cannot be greater than 127");
+    }
+    this.octave = (midiPitch / 12) - 1;
+    this.note = Note.values()[midiPitch % 12];
+  }
+
+  /**
    * Sets this Pitch's note.
    * @param note new note
    */

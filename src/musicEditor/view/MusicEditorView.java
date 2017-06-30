@@ -1,5 +1,6 @@
 package musicEditor.view;
 
+import musicEditor.MusicEditor;
 import musicEditor.gui.EditorPanel;
 import musicEditor.gui.MeasuresComponent;
 import musicEditor.gui.PianoPanel;
@@ -10,7 +11,6 @@ import musicEditor.music.MusicTracker;
 
 import javax.sound.midi.MetaEventListener;
 import javax.swing.*;
-import javax.swing.text.View;
 import java.awt.*;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseListener;
@@ -32,24 +32,24 @@ public class MusicEditorView implements IMusicEditorView {
   private JPanel editorPanel;
 
   private JPanel pianoPanel;
-  
+
   /**
    * Constructs new MusicEditorView with default fields.
+   */
+  public MusicEditorView() {
+    this.composition = new MusicComposition();
+    this.tracker = new MusicTracker();
+    this.player = new MusicPlayer();
+  }
+
+  /**
+   * Constructs new MusicEditorView with the given composition, tracker, and player
    */
   public MusicEditorView(MusicComposition composition,
                          MusicTracker tracker, MusicPlayer player) {
     this.composition = composition;
     this.tracker = tracker;
     this.player = player;
-
-    this.measuresComponent = new MeasuresComponent(composition, tracker, player);
-    this.pitchesComponent = new PitchesComponent(composition, tracker, player);
-    this.editorPanel = new EditorPanel(composition, tracker, player);
-    this.pianoPanel = new PianoPanel(composition, tracker, player);
-
-    this.upperScrollPane = new JScrollPane(this.editorPanel);
-    this.upperScrollPane.setColumnHeaderView(this.pitchesComponent);
-    this.upperScrollPane.setRowHeaderView(this.measuresComponent);
   }
 
   @Override
@@ -84,6 +84,15 @@ public class MusicEditorView implements IMusicEditorView {
 
   @Override
   public void initialize() {
+    this.measuresComponent = new MeasuresComponent(composition, tracker, player);
+    this.pitchesComponent = new PitchesComponent(composition, tracker, player);
+    this.editorPanel = new EditorPanel(composition, tracker, player);
+    this.pianoPanel = new PianoPanel(composition, tracker, player);
+
+    this.upperScrollPane = new JScrollPane(this.editorPanel);
+    this.upperScrollPane.setColumnHeaderView(this.pitchesComponent);
+    this.upperScrollPane.setRowHeaderView(this.measuresComponent);
+
     JFrame frame = new JFrame();
     frame.add(this.upperScrollPane);
     frame.add(this.pianoPanel);

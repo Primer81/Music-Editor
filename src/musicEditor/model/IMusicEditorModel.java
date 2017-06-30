@@ -50,19 +50,14 @@ public interface IMusicEditorModel {
   void setPlayer(MusicPlayer player);
 
   /**
-   * Sequences the composition in the music player.
+   * Gets the tempo of the music player
    */
-  void sequenceComposition();
+  int getTempo();
 
   /**
    * Sets the tempo of the music player
    */
   void setTempo(int tempo);
-
-  /**
-   * Sets the current timbre in the musicTracker.
-   */
-  void setTimbre(int timbre);
 
   /**
    * Gets the current beat from the player.
@@ -75,6 +70,21 @@ public interface IMusicEditorModel {
    * @param beat the new beat
    */
   void setBeat(int beat);
+
+  /**
+   * Gets the current timbre.
+   */
+  int getTimbre();
+
+  /**
+   * Sets the current timbre.
+   */
+  void setTimbre(int timbre);
+
+  /**
+   * Sequences the composition in the music player.
+   */
+  void sequenceComposition();
 
   /**
    * Plays the composition.

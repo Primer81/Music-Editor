@@ -9,6 +9,7 @@ import java.util.Collection;
 public class MusicPlayer {
   private int tempo;
   private Sequencer sequencer;
+  private MusicComposition composition;
 
   public MusicPlayer() {
     this.tempo = 1;
@@ -35,6 +36,14 @@ public class MusicPlayer {
     this.sequencer = sequencer;
   }
 
+  public int getBeat() {
+    return (int) this.sequencer.getTickPosition();
+  }
+
+  public void setBeat(int beat) {
+    this.sequencer.setTickPosition(beat);
+  }
+
   public void play() {
     this.sequencer.start();
     this.sequencer.setTempoInMPQ(this.tempo);
@@ -42,6 +51,10 @@ public class MusicPlayer {
 
   public void pause() {
     this.sequencer.stop();
+  }
+
+  public boolean isRunning() {
+    return this.sequencer.isRunning();
   }
 
   public void sequenceComposition(MusicComposition composition) {

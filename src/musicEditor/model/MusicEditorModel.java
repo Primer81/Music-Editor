@@ -1,8 +1,11 @@
 package musicEditor.model;
 
 import musicEditor.music.*;
-  
+import musicEditor.util.CompositionBuilder;
+
 import javax.sound.midi.Sequencer;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.SortedSet;
 
 /**
@@ -29,9 +32,11 @@ public class MusicEditorModel implements IMusicEditorModel {
    * Defaults beat to 0, tempo to 1, and timbre to 1.
    * @param composition this editor's composition
    */
-  public MusicEditorModel(MusicComposition composition) {
+  public MusicEditorModel(MusicComposition composition, MusicTracker tracker, MusicPlayer player) {
     this();
     this.composition = composition;
+    this.tracker = tracker;
+    this.player = player;
   }
 
   @Override
@@ -65,8 +70,8 @@ public class MusicEditorModel implements IMusicEditorModel {
   }
 
   @Override
-  public void sequenceComposition() {
-    this.player.sequenceComposition(this.composition);
+  public int getTempo() {
+    return this.player.getTempo();
   }
 
   @Override
@@ -75,18 +80,28 @@ public class MusicEditorModel implements IMusicEditorModel {
   }
 
   @Override
+  public int getBeat() {
+    return this.player.getBeat();
+  }
+
+  @Override
+  public void setBeat(int beat) {
+    this.player.setBeat(beat);
+  }
+
+  @Override
+  public int getTimbre() {
+    return this.tracker.getTimbre();
+  }
+
+  @Override
   public void setTimbre(int timbre) {
     this.tracker.setTimbre(timbre);
   }
 
   @Override
-  public int getBeat() {
-    return (int) this.player.getSequencer().getTickPosition();
-  }
-
-  @Override
-  public void setBeat(int beat) {
-    this.player.getSequencer().setTickPosition(beat);
+  public void sequenceComposition() {
+    this.player.sequenceComposition(this.composition);
   }
 
   @Override
@@ -101,7 +116,7 @@ public class MusicEditorModel implements IMusicEditorModel {
 
   @Override
   public boolean isRunning() {
-    return this.player.getSequencer().isRunning();
+    return this.player.isRunning();
   }
 
   @Override
@@ -137,4 +152,44 @@ public class MusicEditorModel implements IMusicEditorModel {
   }
 
   /* TODO: Add Feature methods. */
+
+
+  /**
+   * Builder class that constructs a music composition.
+   */
+  public static final class Builder implements CompositionBuilder<MusicEditorModel> {
+    private MusicComposition composition;
+    private MusicTracker tracker;
+    private MusicPlayer player;
+    private IMusicEditorModel model;
+
+    public Builder() {
+      this.composition = new MusicComposition();
+      this.tracker = new MusicTracker();
+      this.player = new MusicPlayer();
+      this.model = new MusicEditorModel();
+    }
+
+    /**
+     * Builds the MusicEditorModel.
+     */
+    @Override
+    public MusicEditorModel build() {
+      return new MusicEditorModel(this.composition, this.tracker, this.player);
+    }
+
+    @Override
+    public CompositionBuilder<MusicEditorModel> setTempo(int tempo) {
+      this.player.setTempo(tempo);
+      return this;
+    }
+
+    @Override
+    public CompositionBuilder<MusicEditorModel> addNote(
+        int start, int end, int timbre, int midiPitch, int volume) {
+      Tone tone = new Tone(new Pitch((midiPitch)), start, start + (end - start), volume, timbre);
+      this.composition.addTone(tone);
+      return this;
+    }
+  }
 }
