@@ -80,6 +80,31 @@ public class MusicEditorModel implements IMusicEditorModel {
   }
 
   @Override
+  public int getBeat() {
+    return (int) this.player.getSequencer().getTickPosition();
+  }
+
+  @Override
+  public void setBeat(int beat) {
+    this.player.getSequencer().setTickPosition(beat);
+  }
+
+  @Override
+  public void play() {
+    this.player.play();
+  }
+
+  @Override
+  public void pause() {
+    this.player.pause();
+  }
+
+  @Override
+  public boolean isRunning() {
+    return this.player.getSequencer().isRunning();
+  }
+
+  @Override
   public void addTone(Tone tone) {
     this.composition.addTone(tone);
   }

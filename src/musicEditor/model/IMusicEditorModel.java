@@ -65,6 +65,33 @@ public interface IMusicEditorModel {
   void setTimbre(int timbre);
 
   /**
+   * Gets the current beat from the player.
+   * @return the current beat
+   */
+  int getBeat();
+
+  /**
+   * Sets the beat in the player.
+   * @param beat the new beat
+   */
+  void setBeat(int beat);
+
+  /**
+   * Plays the composition.
+   */
+  void play();
+
+  /**
+   * Pauses the composition.
+   */
+  void pause();
+
+  /**
+   * Returns whether the composition is playing or not.
+   */
+  boolean isRunning();
+
+  /**
    * Adds the given tone to the composition.
    * @param tone the tone to be added
    */

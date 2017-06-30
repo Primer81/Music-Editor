@@ -86,6 +86,7 @@ public class MusicEditorView implements IMusicEditorView {
   public void initialize() {
     JFrame frame = new JFrame();
     frame.add(this.upperScrollPane);
+    frame.add(this.pianoPanel);
     frame.setVisible(true);
   }
 

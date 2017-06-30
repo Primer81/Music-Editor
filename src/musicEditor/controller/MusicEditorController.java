@@ -5,6 +5,7 @@ import musicEditor.view.IMusicEditorView;
 
 import javax.sound.midi.InvalidMidiDataException;
 import java.awt.Point;
+import java.awt.event.KeyEvent;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Stack;
@@ -23,8 +24,7 @@ public class MusicEditorController implements IMusicEditorController {
    *
    * @param model The model
    */
-  public MusicEditorController(IMusicEditorModel model)
-  {
+  public MusicEditorController(IMusicEditorModel model) {
     this.model = model;
   }
 
@@ -57,6 +57,39 @@ public class MusicEditorController implements IMusicEditorController {
     Map<Character,Runnable> keyTypes = new HashMap<Character,Runnable>();
     Map<Integer,Runnable> keyPresses = new HashMap<Integer,Runnable>();
     Map<Integer,Runnable> keyReleases = new HashMap<Integer,Runnable>();
+
+    keyPresses.put(KeyEvent.VK_LEFT, () -> {
+      if (!this.model.isRunning()) {
+        this.model.setBeat(this.model.getBeat() - 1);
+        this.view.update();
+      }
+    });
+    keyPresses.put(KeyEvent.VK_RIGHT, () -> {
+      if (!this.model.isRunning()) {
+        this.model.setBeat(this.model.getBeat() + 1);
+        this.view.update();
+      }
+    });
+    keyPresses.put(KeyEvent.VK_SPACE, () -> {
+      if (this.model.isRunning()) {
+        this.model.pause();
+      }
+      else {
+        this.model.play();
+      }
+    });
+    keyPresses.put(KeyEvent.VK_HOME, () -> {
+      if (!this.model.isRunning()) {
+        this.model.setBeat(0);
+        this.view.update();
+      }
+    });
+    keyPresses.put(KeyEvent.VK_END, () -> {
+      if (!this.model.isRunning()) {
+        this.model.setBeat(this.model.length() - 1);
+        this.view.update();
+      }
+    });
 
     KeyboardListener listener = new KeyboardListener();
     listener.setKeyTypedMap(keyTypes);
@@ -93,6 +126,14 @@ public class MusicEditorController implements IMusicEditorController {
    */
   private void configureMetaEventsListener() {
     Map<String, Runnable> metaRead = new HashMap<>();
+
+    metaRead.put("beat", () -> {
+      this.model.setBeat(this.model.getBeat() + 1);
+      this.view.update();
+    });
+    metaRead.put("end", () -> {
+      this.model.pause();
+    });
 
     MetaMessageListener listener = new MetaMessageListener();
     listener.setMetaReadMap(metaRead);
