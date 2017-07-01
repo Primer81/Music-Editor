@@ -38,7 +38,7 @@ public class MeasuresComponent extends JComponent {
   public Dimension getPreferredSize() {
     return new Dimension(
         (this.composition.length() + 1) * this.CELL_WIDTH,
-        (this.CELL_HEIGHT));
+        this.CELL_HEIGHT);
   }
 
   /**
@@ -51,8 +51,8 @@ public class MeasuresComponent extends JComponent {
 
     for (int i = 0; i < length; i += 4) {
       int x = i * this.CELL_WIDTH;
-      if (drawHere.contains(x, this.CELL_HEIGHT)) {
-        g.drawString(Integer.toString(i), x, this.CELL_HEIGHT);
+      if (drawHere.contains(x, this.CELL_HEIGHT / 2)) {
+        g.drawString(Integer.toString(i), x, this.CELL_HEIGHT / 2);
       }
     }
   }

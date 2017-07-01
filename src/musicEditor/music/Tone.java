@@ -19,7 +19,7 @@ public class Tone {
   /**
    * Constructs a Tone.
    * Ensures that start is non-negative.
-   * Ensures that duration is greater than or equal to one.
+   * Ensures that duration is non-negative.
    * Ensures that volume is non-negative.
    * Ensures that timbre is greater than or equal to one and less than or equal to 128
    * @param pitch this Tone's pitch
@@ -30,8 +30,8 @@ public class Tone {
       throw new IllegalArgumentException("start cannot be negative");
     }
     this.start = start;
-    if (duration < 1) {
-      throw new IllegalArgumentException("duration must be greater than zero");
+    if (duration < 0) {
+      throw new IllegalArgumentException("duration must be non-negative");
     }
     this.duration = duration;
     if (volume < 0) {

@@ -129,7 +129,7 @@ public class MusicComposition {
     }
     MusicSheet sheet = this.composition.get(timbre);
     Tone result = sheet.getTone(pitch, beat);
-    return result.clone();
+    return result;
   }
 
   /**

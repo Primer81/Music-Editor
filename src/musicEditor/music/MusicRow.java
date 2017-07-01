@@ -23,7 +23,7 @@ public class MusicRow {
    */
   public MusicRow(Pitch PITCH, int TIMBRE) {
     this.PITCH = PITCH;
-    if (TIMBRE > 1 || TIMBRE > 128) {
+    if (TIMBRE < 1 || TIMBRE > 128) {
       throw new IllegalArgumentException("timbre must correspond to a valid MIDI instrument " +
           "code between 1 and 128");
     }
@@ -157,7 +157,11 @@ public class MusicRow {
    * @return the Tone at the specified beat
    */
   public Tone getTone(int beat) {
-    return this.row.get(beat).clone();
+    Tone tone = this.row.get(beat);
+    if (tone != null) {
+      tone = tone.clone();
+    }
+    return tone;
   }
 
   /**

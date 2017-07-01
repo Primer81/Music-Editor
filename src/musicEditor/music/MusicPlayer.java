@@ -15,6 +15,7 @@ public class MusicPlayer {
     this.tempo = 1;
     try {
       this.sequencer = MidiSystem.getSequencer();
+      this.sequencer.open();
     } catch (MidiUnavailableException e) {
       e.printStackTrace();
     }
@@ -68,9 +69,9 @@ public class MusicPlayer {
           Collection<Tone> tones = row.getTones();
           for (Tone tone : tones) {
             MidiMessage start = new ShortMessage(
-                ShortMessage.NOTE_ON, tone.getTimbre(), tone.midiPitch(), tone.getVolume());
+                ShortMessage.NOTE_ON, tone.getTimbre() - 1, tone.midiPitch(), tone.getVolume());
             MidiMessage stop = new ShortMessage(
-                ShortMessage.NOTE_OFF, tone.getTimbre(), tone.midiPitch(), tone.getVolume());
+                ShortMessage.NOTE_OFF, tone.getTimbre() - 1, tone.midiPitch(), tone.getVolume());
             track.add(new MidiEvent(start, tone.getStart()));
             track.add(new MidiEvent(stop, (tone.getStart() + tone.getDuration())));
           }

@@ -26,21 +26,13 @@ public class MusicEditorView implements IMusicEditorView {
   private MusicTracker tracker;
   private MusicPlayer player;
 
+  private JFrame frame;
   private JScrollPane upperScrollPane;
   private JComponent measuresComponent;
   private JComponent pitchesComponent;
   private JPanel editorPanel;
 
   private JPanel pianoPanel;
-
-  /**
-   * Constructs new MusicEditorView with default fields.
-   */
-  public MusicEditorView() {
-    this.composition = new MusicComposition();
-    this.tracker = new MusicTracker();
-    this.player = new MusicPlayer();
-  }
 
   /**
    * Constructs new MusicEditorView with the given composition, tracker, and player
@@ -50,26 +42,24 @@ public class MusicEditorView implements IMusicEditorView {
     this.composition = composition;
     this.tracker = tracker;
     this.player = player;
-  }
 
-  @Override
-  public void setComposition(MusicComposition composition) {
-    this.composition = composition;
-  }
+    this.frame = new JFrame();
 
-  @Override
-  public void setTracker(MusicTracker tracker) {
-    this.tracker = tracker;
-  }
+    this.measuresComponent = new MeasuresComponent(composition, tracker, player);
+    this.pitchesComponent = new PitchesComponent(composition, tracker, player);
+    this.editorPanel = new EditorPanel(composition, tracker, player);
+    this.pianoPanel = new PianoPanel(composition, tracker, player);
 
-  @Override
-  public void setPlayer(MusicPlayer player) {
-    this.player = player;
+    this.upperScrollPane = new JScrollPane(this.editorPanel);
+    this.upperScrollPane.setColumnHeaderView(this.measuresComponent);
+    this.upperScrollPane.setRowHeaderView(this.pitchesComponent);
   }
 
   @Override
   public void addKeyListener(KeyListener listener) {
+    this.frame.addKeyListener(listener);
     this.upperScrollPane.addKeyListener(listener);
+    this.editorPanel.addKeyListener(listener);
   }
 
   @Override
@@ -84,18 +74,16 @@ public class MusicEditorView implements IMusicEditorView {
 
   @Override
   public void initialize() {
-    this.measuresComponent = new MeasuresComponent(composition, tracker, player);
-    this.pitchesComponent = new PitchesComponent(composition, tracker, player);
-    this.editorPanel = new EditorPanel(composition, tracker, player);
-    this.pianoPanel = new PianoPanel(composition, tracker, player);
-
-    this.upperScrollPane = new JScrollPane(this.editorPanel);
-    this.upperScrollPane.setColumnHeaderView(this.pitchesComponent);
-    this.upperScrollPane.setRowHeaderView(this.measuresComponent);
-
-    JFrame frame = new JFrame();
-    frame.add(this.upperScrollPane);
-    frame.add(this.pianoPanel);
+    frame.setFocusable(true);
+    frame.requestFocus();
+    frame.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+    frame.setTitle("Music Editor");
+    frame.setPreferredSize(new Dimension(20 * 71, 1000));
+    frame.setResizable(true);
+    frame.setLayout(new BorderLayout());
+    frame.add(this.upperScrollPane, BorderLayout.CENTER);
+    frame.add(this.pianoPanel, BorderLayout.SOUTH);
+    frame.pack();
     frame.setVisible(true);
   }
 
@@ -110,7 +98,6 @@ public class MusicEditorView implements IMusicEditorView {
     JViewport viewport = this.upperScrollPane.getViewport();
     viewport.setViewPosition(new Point(x, viewport.getViewPosition().y));
     // repaints the gui
-    this.upperScrollPane.repaint();
-    this.pianoPanel.repaint();
+    this.frame.repaint();
   }
 }

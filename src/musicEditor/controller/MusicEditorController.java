@@ -35,9 +35,6 @@ public class MusicEditorController implements IMusicEditorController {
    */
   public void setView(IMusicEditorView view) throws InvalidMidiDataException {
     this.view = view;
-    view.setComposition(this.model.getComposition());
-    view.setTracker(this.model.getTracker());
-    view.setPlayer(this.model.getPlayer());
     //create and set the listeners
     this.configureKeyBoardListener();
     this.configureMouseKeyListener();
@@ -73,9 +70,12 @@ public class MusicEditorController implements IMusicEditorController {
     keyPresses.put(KeyEvent.VK_SPACE, () -> {
       if (this.model.isRunning()) {
         this.model.pause();
+        this.view.update();
       }
       else {
+        this.model.sequenceComposition();
         this.model.play();
+        this.view.update();
       }
     });
     keyPresses.put(KeyEvent.VK_HOME, () -> {

@@ -44,6 +44,7 @@ public class MusicEditor {
 
     IMusicEditorController controller = new MusicEditorController(model);
 
-    controller.setView(new MusicEditorView());
+    controller.setView(
+        new MusicEditorView(model.getComposition(), model.getTracker(), model.getPlayer()));
   }
 }

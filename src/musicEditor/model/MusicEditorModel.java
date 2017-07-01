@@ -187,7 +187,7 @@ public class MusicEditorModel implements IMusicEditorModel {
     @Override
     public CompositionBuilder<MusicEditorModel> addNote(
         int start, int end, int timbre, int midiPitch, int volume) {
-      Tone tone = new Tone(new Pitch((midiPitch)), start, start + (end - start), volume, timbre);
+      Tone tone = new Tone(new Pitch((midiPitch)), start, end - start, volume, timbre);
       this.composition.addTone(tone);
       return this;
     }

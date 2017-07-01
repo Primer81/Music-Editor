@@ -63,6 +63,16 @@ public class EditorPanel extends JPanel {
       for (int curCol = 0; curCol < length; curCol++) {
         Tone tone = this.composition.getTone(timbre, p, curCol);
         if (tone != null) {
+          // creates a rectangle to represent the continuation of the tone and draws it if it
+          // intersects the clipping area
+          Rectangle greenRect = new Rectangle(
+              this.CELL_WIDTH * tone.getDuration(), this.CELL_HEIGHT);
+          greenRect.setLocation(
+              this.CELL_WIDTH * curCol, this.CELL_HEIGHT * curRow);
+          if (drawHere.intersects(greenRect)) {
+            g.setColor(Color.GREEN);
+            g.fillRect(greenRect.x, greenRect.y, greenRect.width, greenRect.height);
+          }
           // creates a rectangle to represent the start of the tone and draws it if it
           // intersects the clipping area
           Rectangle blackRect = new Rectangle(
@@ -71,17 +81,7 @@ public class EditorPanel extends JPanel {
               this.CELL_WIDTH * curCol, this.CELL_HEIGHT * curRow);
           if (drawHere.intersects(blackRect)) {
             g.setColor(Color.BLACK);
-            g.drawRect(blackRect.x, blackRect.y, blackRect.width, blackRect.height);
-          }
-          // creates a rectangle to represent the continuation of the tone and draws it if it
-          // intersects the clipping area
-          Rectangle greenRect = new Rectangle(
-              this.CELL_WIDTH * tone.getDuration(), this.CELL_HEIGHT);
-          greenRect.setLocation(
-              this.CELL_WIDTH * (curCol + 1), this.CELL_HEIGHT * (curRow + 1));
-          if (drawHere.intersects(greenRect)) {
-            g.setColor(Color.GREEN);
-            g.drawRect(greenRect.x, greenRect.y, greenRect.width, greenRect.height);
+            g.fillRect(blackRect.x, blackRect.y, blackRect.width, blackRect.height);
           }
         }
       }
@@ -113,6 +113,7 @@ public class EditorPanel extends JPanel {
     int x = (int) sequencer.getTickPosition() * this.CELL_WIDTH;
     int y = range.size() * this.CELL_HEIGHT;
     if (drawHere.intersectsLine(x, 0, x, y)) {
+      g.setColor(Color.RED);
       g.drawLine(x, 0, x, y);
     }
   }
